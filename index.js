@@ -12,9 +12,13 @@ Add.addEventListener("click", ()=>{
     newItem.style.backgroundColor = "#9a8c98"
     newItem.style.border = "1px #22223b solid";
     newItem.style.boxSizing = "border-box"
-    newItem.style.padding = "0";
     newItem.style.margin = "0 10px 10px 0";
+    newItem.style.display = "flex";
+    newItem.style.flexDirection = "column";
+    newItem.style.justifyContent = "space-between"
+    newItem.style.padding = "10px"
     List_Container.appendChild(newItem);
+    
     newItem.addEventListener("click", ()=>{
         currentItem = newItem;
         items.push(newItem)
@@ -31,7 +35,15 @@ Add.addEventListener("click", ()=>{
 
     let item_input = document.createElement("input");
     item_input.style.fontFamily = "monospace";
+    item_input.style.width = "10rem";
+    item_input.style.margin = "0";
     newItem.appendChild(item_input)
+
+    let item_content = document.createElement("textarea");
+    item_content.style.fontFamily = "monospace";
+    item_content.style.height = "2rem";
+    item_content.style.margin = "0";
+    newItem.appendChild(item_content)
 })
 
 Remove.addEventListener("click", ()=>{
