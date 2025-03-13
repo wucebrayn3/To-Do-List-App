@@ -16,21 +16,25 @@ Add.addEventListener("click", ()=>{
     newItem.style.display = "flex";
     newItem.style.flexDirection = "column";
     newItem.style.justifyContent = "space-between"
-    newItem.style.padding = "10px"
+    newItem.style.padding = "10px";
+    newItem.style.transition = "0.25s";
     List_Container.appendChild(newItem);
     
-    newItem.addEventListener("click", ()=>{
+    newItem.addEventListener("click", ()=>{        
         currentItem = newItem;
-        items.push(newItem)
-        items.forEach(i => {
+        items.push(newItem);
+        if (currentItem.style.boxShadow != "rgba(75, 255, 75, 0.75) 0px 0px 5px"){
+            currentItem.style.boxShadow = "rgba(75, 255, 75, 0.75) 0px 0px 5px";
+        }
+        else{
+            currentItem.style.boxShadow = "none";
+            currentItem = "";
+        }
+        items.forEach(i=>{
             if (i != currentItem){
                 i.style.boxShadow = "none";
             }
-            else{
-                i.style.boxShadow = "0 0 5px rgba(100, 255, 100, 0.5)"
-            }
         })
-        console.log(newItem)
     })
 
     let item_input = document.createElement("input");
@@ -43,6 +47,7 @@ Add.addEventListener("click", ()=>{
     item_content.style.fontFamily = "monospace";
     item_content.style.height = "2rem";
     item_content.style.margin = "0";
+    item_content.style.resize = "none";
     newItem.appendChild(item_content)
 })
 
@@ -55,3 +60,4 @@ Remove.addEventListener("click", ()=>{
     }
     currentItem = "";
 })
+
